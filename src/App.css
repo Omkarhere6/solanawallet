@@ -1,38 +1,509 @@
-.App {
+/* Global Styles */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f0f2f5;
+  margin: 0;
+  padding: 0;
+}
+
+.app-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
   text-align: center;
+  color: #333;
+  margin-bottom: 20px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+/* Input and Button Styles */
+.input-container {
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-bottom: 20px;
+}
+
+.input-box {
+  width: 100%;
+  max-width: 400px;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+.fetch-button {
+  padding: 10px 20px;
+  font-size: 16px;
+  color: #ffffff;
+  background-color: #007bff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.fetch-button:disabled {
+  background-color: #aaa;
+  cursor: not-allowed;
+}
+
+.fetch-button:hover:not(:disabled) {
+  background-color: #0056b3;
+}
+
+/* Tabs Styles */
+.tabs {
+  display: flex;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  margin-bottom: 20px;
+}
+
+.tab-button {
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  background-color: #f9f9f9;
+  border-radius: 4px 4px 0 0;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.tab-button.active {
+  background-color: #ffffff;
+  border-bottom: 2px solid #007bff;
+}
+
+.tab-button:hover {
+  background-color: #f1f1f1;
+}
+
+/* Content Area Styles */
+.content-area {
+  padding: 20px;
+}
+
+.card {
+  background-color: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+  padding: 20px;
+}
+
+.card h2 {
+  margin-top: 0;
+  color: #007bff;
+}
+
+.balance-view p {
+  margin: 10px 0;
+  font-size: 16px;
+}
+
+/* Dropdown Styles */
+.currency-dropdown {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.dropdown-select {
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 16px;
+  background-color: #ffffff;
+  cursor: pointer;
+  transition: border-color 0.3s ease;
+}
+
+.dropdown-select:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+/* Error Message Styles */
+.error-message {
+  color: #ff4d4d;
+  text-align: center;
+  margin-top: 10px;
+  font-size: 16px;
+}
+
+/* Transaction Cards Styles */
+.transaction-cards-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.transaction-card {
+  background-color: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  width: 300px;
+  box-sizing: border-box;
+}
+
+.transaction-card h3 {
+  margin-top: 0;
+  color: #007bff;
+}
+
+.transaction-card p {
+  margin: 10px 0;
+  font-size: 14px;
+}
+.price-view,
+.market-cap-view {
+  margin-bottom: 20px;
+}
+
+.price-view h2,
+.market-cap-view h2 {
+  font-size: 1.5em;
+}
+
+.price-view p,
+.market-cap-view p {
+  font-size: 1.2em;
+}
+.semi-wallet-view {
+  margin-top: 20px;
+}
+
+.semi-wallet-view h2 {
+  font-size: 1.5em;
+}
+
+.semi-wallet-view p {
+  font-size: 1.2em;
+}
+
+.input-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.input-box {
+  padding: 8px;
+  font-size: 1rem;
+}
+
+.fetch-button {
+  padding: 10px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.semi-wallet-view {
+  background-color: #f0f8ff;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.semi-wallet-view h2 {
+  color: #2c3e50;
+  margin-bottom: 20px;
+  border-bottom: 2px solid #3498db;
+  padding-bottom: 10px;
+}
+
+.semi-wallet-content {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.wallet-address {
+  background-color: #ffffff;
+  padding: 15px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.wallet-address .label {
+  font-weight: bold;
+  color: #34495e;
+  min-width: 120px;
+}
+
+.wallet-address .value {
+  font-family: monospace;
+  background-color: #ecf0f1;
+  padding: 5px 10px;
+  border-radius: 4px;
+  word-break: break-all;
+}
+
+.other-data h3 {
+  color: #2c3e50;
+  margin-bottom: 10px;
+}
+
+.json-display {
+  background-color: #ffffff;
+  border-radius: 6px;
+  padding: 15px;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.json-item {
+  margin-bottom: 8px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.json-key {
+  font-weight: bold;
+  color: #34495e;
+  min-width: 100px;
+}
+
+.json-value {
+  font-family: monospace;
+  background-color: #ecf0f1;
+  padding: 2px 5px;
+  border-radius: 3px;
+  flex-grow: 1;
+  word-break: break-all;
+}
+
+.send-sol-view {
+  background-color: #f0f8ff;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin-top: 20px;
+}
+
+.send-sol-view h2 {
+  color: #2c3e50;
+  margin-bottom: 20px;
+  border-bottom: 2px solid #3498db;
+  padding-bottom: 10px;
+}
+
+.send-sol-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.input-box {
+  padding: 10px;
+  border: 1px solid #bdc3c7;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+.send-button {
+  background-color: #3498db;
+  color: white;
+  border: none;
+  padding: 12px;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.send-button:hover {
+  background-color: #2980b9;
+}
+
+.sending-status {
+  margin-top: 15px;
+  padding: 10px;
+  border-radius: 4px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.sending-status:empty {
+  display: none;
+}
+
+.airdrop-view {
+  background-color: #f0f8ff;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin-top: 20px;
+}
+
+.airdrop-view h2 {
+  color: #2c3e50;
+  margin-bottom: 20px;
+  border-bottom: 2px solid #3498db;
+  padding-bottom: 10px;
+}
+
+.airdrop-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.recipient-input {
+  display: flex;
+  gap: 10px;
+}
+
+.input-box {
+  padding: 10px;
+  border: 1px solid #bdc3c7;
+  border-radius: 4px;
+  font-size: 16px;
+  flex-grow: 1;
+}
+
+.add-button, .remove-button, .airdrop-button {
+  padding: 10px 15px;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.add-button {
+  background-color: #2ecc71;
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.add-button:hover {
+  background-color: #27ae60;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.remove-button {
+  background-color: #e74c3c;
+  color: white;
+}
+
+.remove-button:hover {
+  background-color: #c0392b;
+}
+
+.airdrop-button {
+  background-color: #3498db;
+  color: white;
+}
+
+.airdrop-button:hover {
+  background-color: #2980b9;
+}
+
+.airdrop-status {
+  margin-top: 15px;
+  padding: 10px;
+  border-radius: 4px;
+  text-align: center;
+  font-weight: bold;
+  background-color: #ecf0f1;
+}
+
+.collection-nfts-view {
+  background-color: #f0f8ff;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin-top: 20px;
+}
+
+.collection-nfts-view h2 {
+  color: #2c3e50;
+  margin-bottom: 20px;
+  border-bottom: 2px solid #3498db;
+  padding-bottom: 10px;
+}
+
+.collection-nfts-form {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.input-box {
+  padding: 10px;
+  border: 1px solid #bdc3c7;
+  border-radius: 4px;
+  font-size: 16px;
+  flex-grow: 1;
+}
+
+.fetch-button {
+  padding: 10px 15px;
+  background-color: #3498db;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.fetch-button:hover {
+  background-color: #2980b9;
+}
+
+.fetch-button:disabled {
+  background-color: #bdc3c7;
+  cursor: not-allowed;
+}
+
+.nft-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 20px;
+}
+
+.nft-card {
+  background-color: white;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.nft-card:hover {
+  transform: translateY(-5px);
+}
+
+.nft-image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.nft-card h3 {
+  padding: 10px;
+  margin: 0;
+  font-size: 16px;
+  color: #2c3e50;
+}
+
+.nft-card p {
+  padding: 0 10px 10px;
+  margin: 0;
+  font-size: 14px;
+  color: #7f8c8d;
 }
